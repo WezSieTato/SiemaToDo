@@ -24,11 +24,12 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
     private int layoutResourceId;
 
     public TaskListAdapter(Context context, int layoutResourceId,
-                           List<Task> objects) {
+                           List<Task> objects, TaskerDbHelper db) {
         super(context, layoutResourceId, objects);
         this.layoutResourceId = layoutResourceId;
         this.taskList = objects;
         this.context = context;
+        this.db = db;
     }
 
     /**
