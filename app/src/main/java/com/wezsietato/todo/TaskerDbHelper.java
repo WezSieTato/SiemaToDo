@@ -1,4 +1,4 @@
-package com.todo.wezsietato.siematodo;
+package com.wezsietato.todo;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -17,15 +17,15 @@ public class TaskerDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = “taskerManager”;
+    private static final String DATABASE_NAME = "taskerManager";
 
     // tasks table name
-    private static final String TABLE_TASKS = “tasks”;
+    private static final String TABLE_TASKS = "tasks";
 
     // tasks Table Columns names
-    private static final String KEY_ID = “id”;
-    private static final String KEY_TASKNAME = “taskName”;
-    private static final String KEY_STATUS = “status”;
+    private static final String KEY_ID = "id";
+    private static final String KEY_TASKNAME = "taskName";
+    private static final String KEY_STATUS = "status";
 
     public TaskerDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,7 +36,7 @@ public class TaskerDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_TASKS + " ( "
-                + KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + KEY_TASKNAME + " TEXT, "
                 + KEY_STATUS + " INTEGER)";
         sqLiteDatabase.execSQL(sql);

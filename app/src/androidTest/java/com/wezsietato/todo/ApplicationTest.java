@@ -1,4 +1,4 @@
-package com.todo.wezsietato.siematodo;
+package com.wezsietato.todo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

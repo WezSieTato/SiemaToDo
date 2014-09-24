@@ -1,4 +1,4 @@
-package com.todo.wezsietato.siematodo;
+package com.wezsietato.todo;
 
 /**
  * Created by WezSieTato on 24.09.2014.

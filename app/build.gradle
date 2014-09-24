@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.todo.wezsietato.siematodo"
+        applicationId "com.wezsietato.todo"
         minSdkVersion 16
         targetSdkVersion 20
         versionCode 1
