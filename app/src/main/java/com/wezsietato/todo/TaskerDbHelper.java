@@ -73,7 +73,7 @@ public class TaskerDbHelper extends SQLiteOpenHelper {
                 Task task = new Task();
                 task.setId(cursor.getInt(0));
                 task.setTaskName(cursor.getString(1));
-                task.setStatus(cursor.getInt(2));
+                task.setStatus(cursor.getInt(2) == 1);
                 taskList.add(task);
             } while (cursor.moveToNext());
         }

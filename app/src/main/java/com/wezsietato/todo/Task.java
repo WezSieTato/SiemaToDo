@@ -5,15 +5,15 @@ package com.wezsietato.todo;
  */
 public class Task {
     private String taskName;
-    private int status;
+    private boolean status;
     private int id;
 
     public Task() {
         this.taskName = null;
-        this.status = 0;
+        this.status = false;
     }
 
-    public Task(String taskName, int status) {
+    public Task(String taskName, boolean status) {
         super();
         this.taskName = taskName;
         this.status = status;
@@ -35,11 +35,11 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public int getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 }

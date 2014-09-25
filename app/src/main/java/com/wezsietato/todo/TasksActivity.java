@@ -33,7 +33,7 @@ public class TasksActivity extends Activity {
             Toast.makeText(this, "enter the task description first!!",
             Toast.LENGTH_LONG);
         } else {
-            Task task = new Task(s, 0);
+            Task task = new Task(s, false);
             db.addTask(task);
             Log.d("tasker", "data added");
             t.setText("");
