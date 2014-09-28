@@ -49,6 +49,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                     parent, false);
             chk = (CheckBox) convertView.findViewById(R.id.checkBox1);
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
+            View front = (View) convertView.findViewById(R.id.taskRowFront);
             convertView.setTag(chk);
 
             chk.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +67,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                 }
             });
 
-            convertView.setOnClickListener(new View.OnClickListener() {
+            front.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v.getTag();

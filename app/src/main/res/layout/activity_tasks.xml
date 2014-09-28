@@ -27,16 +27,18 @@
         android:onClick="addTaskNow"
         />
 
-    <ListView
+    <com.fortysevendeg.swipelistview.SwipeListView
+        xmlns:swipe="http://schemas.android.com/apk/res-auto"
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button1"
+        swipe:swipeFrontView="@+id/taskRowFront"
+        swipe:swipeBackView="@+id/taskRowBack"
+        swipe:swipeMode="right"
+        swipe:swipeOpenOnLongPress="false"
+        />
 
-        >
-
-
-    </ListView>
 
 </RelativeLayout>
