@@ -20,8 +20,6 @@ import java.util.List;
  */
 public class TaskListAdapter extends ArrayAdapter<Task> {
 
-    private Context context;
-    private List<Task> taskList = new ArrayList<Task>();
     private TaskerDbHelper db;
     private int layoutResourceId;
 
@@ -29,9 +27,6 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                            List<Task> objects, TaskerDbHelper db) {
         super(context, layoutResourceId, objects);
         this.layoutResourceId = layoutResourceId;
-        this.taskList = objects;
-        this.context = context;
-
         this.db = db;
     }
 
@@ -46,7 +41,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         TextView tv = null;
         Button deleteButton = null;
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context
+            LayoutInflater inflater = (LayoutInflater) getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.task_row,
                     parent, false);
@@ -63,7 +58,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                     changeTask.setStatus(cb.isChecked());
                     db.updateTask(changeTask);
                     Toast.makeText(
-                            context,
+                            getContext(),
                             "Clicked on Checkbox: " + cb.getText() + " is "
                                     + cb.isChecked(), Toast.LENGTH_LONG)
                             .show();
@@ -85,7 +80,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                 public void onClick(View view) {
                     Task task = (Task) view.getTag();
                     db.deleteTask(task);
-                    taskList.remove(task);
+                    remove(task);
                     notifyDataSetChanged();
                 }
             });
@@ -97,7 +92,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
             deleteButton = (Button)convertView.findViewById(R.id.buttonDelete);
         }
-        Task current = taskList.get(position);
+        Task current = getItem(position);
         tv.setText(current.getTaskName());
         chk.setChecked(current.getStatus());
         chk.setTag(current);
