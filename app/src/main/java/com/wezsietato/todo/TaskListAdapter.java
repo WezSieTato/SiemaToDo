@@ -45,7 +45,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_inner_view,
+            convertView = inflater.inflate(R.layout.task_row,
                     parent, false);
             chk = (CheckBox) convertView.findViewById(R.id.checkBox1);
             tv = (TextView) convertView.findViewById(R.id.taskTextView);

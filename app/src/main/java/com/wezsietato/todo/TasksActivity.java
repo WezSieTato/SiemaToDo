@@ -21,7 +21,7 @@ public class TasksActivity extends Activity {
         setContentView(R.layout.activity_tasks);
         db = new TaskerDbHelper(this);
         list = db.getAllTasks();
-        adapt = new TaskListAdapter(this, R.layout.list_inner_view, list, db);
+        adapt = new TaskListAdapter(this, R.layout.task_row, list, db);
         ListView listTask = (ListView) findViewById(R.id.listView1);
         listTask.setAdapter(adapt);
     }
