@@ -4,36 +4,47 @@
     android:layout_height="match_parent"
     tools:context="com.wezsietato.todo.TasksActivity">
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/editRowTasks"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
+        style="@style/RowFront"
         >
 
-        <requestFocus/>
-    </EditText>
+        <EditText
+            android:id="@+id/editTextNewTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="14dp"
-        android:text="@string/addButton"
-        android:onClick="addTaskNow"
-        />
+            <requestFocus/>
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonAddTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="14dp"
+            android:text="@string/addButton"
+            android:onClick="addTaskNow"
+            />
+
+        </RelativeLayout>
+
+
 
     <com.fortysevendeg.swipelistview.SwipeListView
         xmlns:swipe="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/listView1"
+        android:id="@+id/listViewTasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/editRowTasks"
         swipe:swipeFrontView="@+id/taskRowFront"
         swipe:swipeBackView="@+id/taskRowBack"
         swipe:swipeMode="right"

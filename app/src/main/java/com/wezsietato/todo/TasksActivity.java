@@ -22,12 +22,12 @@ public class TasksActivity extends Activity {
         db = new TaskerDbHelper(this);
         list = db.getAllTasks();
         adapt = new TaskListAdapter(this, R.layout.task_row, list, db);
-        ListView listTask = (ListView) findViewById(R.id.listView1);
+        ListView listTask = (ListView) findViewById(R.id.listViewTasks);
         listTask.setAdapter(adapt);
     }
 
     public void addTaskNow(View v) {
-        EditText t = (EditText) findViewById(R.id.editText1);
+        EditText t = (EditText) findViewById(R.id.editTextNewTask);
         String s = t.getText().toString();
         if (s.equalsIgnoreCase("")) {
             Toast.makeText(this, "enter the task description first!!",

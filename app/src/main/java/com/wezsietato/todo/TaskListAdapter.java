@@ -47,7 +47,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.task_row,
                     parent, false);
-            chk = (CheckBox) convertView.findViewById(R.id.checkBox1);
+            chk = (CheckBox) convertView.findViewById(R.id.taskCheckBox);
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
             View front = (View) convertView.findViewById(R.id.taskRowFront);
             convertView.setTag(chk);
@@ -78,7 +78,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
 
 
         } else {
-            chk = (CheckBox) convertView.findViewById(R.id.checkBox1);
+            chk = (CheckBox) convertView.findViewById(R.id.taskCheckBox);
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
         }
         Task current = taskList.get(position);
