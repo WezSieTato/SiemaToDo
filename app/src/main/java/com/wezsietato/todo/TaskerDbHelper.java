@@ -91,4 +91,9 @@ public class TaskerDbHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(task.getId())}
                 );
     }
+
+    public void deleteTask(Task task){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_TASKS, KEY_ID + "=" + task.getId(), null);
+    }
 }

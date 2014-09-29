@@ -6,13 +6,12 @@
     style="@style/RowBack">
 
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Siema Heniu!!!!!!!!!!!!!!!!!!"
+        android:text="@string/deleteButton"
+        android:id="@+id/buttonDelete"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="66dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

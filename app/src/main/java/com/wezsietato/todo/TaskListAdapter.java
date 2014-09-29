@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         this.layoutResourceId = layoutResourceId;
         this.taskList = objects;
         this.context = context;
+
         this.db = db;
     }
 
@@ -42,6 +44,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
     public View getView(int position, View convertView, ViewGroup parent) {
         CheckBox chk = null;
         TextView tv = null;
+        Button deleteButton = null;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,11 +70,23 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                 }
             });
 
-            front.setOnClickListener(new View.OnClickListener() {
+            tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v.getTag();
                     cb.performClick();
+                }
+            });
+
+            deleteButton = (Button)convertView.findViewById(R.id.buttonDelete);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    Task task = (Task) view.getTag();
+                    db.deleteTask(task);
+                    taskList.remove(task);
+                    notifyDataSetChanged();
                 }
             });
 
@@ -80,11 +95,13 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         } else {
             chk = (CheckBox) convertView.findViewById(R.id.taskCheckBox);
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
+            deleteButton = (Button)convertView.findViewById(R.id.buttonDelete);
         }
         Task current = taskList.get(position);
         tv.setText(current.getTaskName());
         chk.setChecked(current.getStatus());
         chk.setTag(current);
+        deleteButton.setTag(current);
         Log.d("listener", String.valueOf(current.getId()));
         return convertView;
 
