@@ -1,21 +1,31 @@
-package com.wezsietato.todo;
+package com.wezsietato.todo.model;
 
 /**
  * Created by WezSieTato on 24.09.2014.
  */
 public class Task {
-    private String taskName;
+    private String name;
     private boolean status;
     private int id;
 
+    Note note;
+
+    public Note getNote() {
+        return note;
+    }
+
+    public void setNote(Note note) {
+        this.note = note;
+    }
+
     public Task() {
-        this.taskName = null;
+        this.name = null;
         this.status = false;
     }
 
-    public Task(String taskName, boolean status) {
+    public Task(String name, boolean status) {
         super();
-        this.taskName = taskName;
+        this.name = name;
         this.status = status;
     }
 
@@ -27,12 +37,12 @@ public class Task {
         this.id = id;
     }
 
-    public String getTaskName() {
-        return taskName;
+    public String getName() {
+        return name;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setName(String taskName) {
+        this.name = taskName;
     }
 
     public boolean getStatus() {

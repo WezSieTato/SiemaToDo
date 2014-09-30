@@ -2,17 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wezsietato.todo.taskview.TasksActivity">
+    tools:context="com.wezsietato.todo.noteview.NotesActivity">
 
     <RelativeLayout
-        android:id="@+id/editRowTasks"
+        android:id="@+id/editRowNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/RowFront"
         >
 
         <EditText
-            android:id="@+id/editTextNewTask"
+            android:id="@+id/editTextNewNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -24,32 +24,29 @@
         </EditText>
 
         <Button
-            android:id="@+id/buttonAddTask"
+            android:id="@+id/buttonAddNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="14dp"
             android:text="@string/addButton"
-            android:onClick="addTaskNow"
+            android:onClick="addNoteNow"
             />
 
-        </RelativeLayout>
-
-
+    </RelativeLayout>
 
     <com.fortysevendeg.swipelistview.SwipeListView
         xmlns:swipe="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/listViewTasks"
+        android:id="@+id/listViewNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editRowTasks"
-        swipe:swipeFrontView="@+id/taskRowFront"
-        swipe:swipeBackView="@+id/taskRowBack"
+        android:layout_below="@+id/editRowNotes"
+        swipe:swipeFrontView="@+id/noteRowFront"
+        swipe:swipeBackView="@+id/noteRowBack"
         swipe:swipeMode="right"
         swipe:swipeOpenOnLongPress="false"
         />
-
 
 </RelativeLayout>

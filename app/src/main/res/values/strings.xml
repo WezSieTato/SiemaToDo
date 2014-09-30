@@ -7,6 +7,6 @@
     <string name="title_activity_tasks">SiemaToDo</string>
     <string name="addButton">Add</string>
     <string name="deleteButton">Delete</string>
-
+    <string name="title_activity_notes">NotesActivity</string>
 
 </resources>

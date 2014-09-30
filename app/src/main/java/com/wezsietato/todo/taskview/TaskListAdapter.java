@@ -1,7 +1,6 @@
-package com.wezsietato.todo;
+package com.wezsietato.todo.taskview;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,11 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.fortysevendeg.swipelistview.SwipeListView;
+import com.wezsietato.todo.R;
+import com.wezsietato.todo.model.Task;
+import com.wezsietato.todo.model.TaskerDbHelper;
+
 import java.util.List;
 
 
@@ -21,13 +24,13 @@ import java.util.List;
 public class TaskListAdapter extends ArrayAdapter<Task> {
 
     private TaskerDbHelper db;
-    private int layoutResourceId;
+    private SwipeListView listView;
 
     public TaskListAdapter(Context context, int layoutResourceId,
-                           List<Task> objects, TaskerDbHelper db) {
+                           List<Task> objects, TaskerDbHelper db, SwipeListView listView) {
         super(context, layoutResourceId, objects);
-        this.layoutResourceId = layoutResourceId;
         this.db = db;
+        this.listView = listView;
     }
 
     /**
@@ -40,15 +43,14 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
         CheckBox chk = null;
         TextView tv = null;
         Button deleteButton = null;
-        if (convertView == null) {
+
+        if (shouldCreateView(convertView)) {
             LayoutInflater inflater = (LayoutInflater) getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.task_row,
                     parent, false);
             chk = (CheckBox) convertView.findViewById(R.id.taskCheckBox);
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
-            View front = (View) convertView.findViewById(R.id.taskRowFront);
-            convertView.setTag(chk);
 
             chk.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,9 +84,12 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
                     db.deleteTask(task);
                     remove(task);
                     notifyDataSetChanged();
+                    listView.setAnimationTime(0);
+                    listView.closeOpenedItems();
+//                    listView.setAdapter(listView.getAdapter());
+
                 }
             });
-
 
 
         } else {
@@ -92,13 +97,26 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
             tv = (TextView) convertView.findViewById(R.id.taskTextView);
             deleteButton = (Button)convertView.findViewById(R.id.buttonDelete);
         }
+        listView.recycle(convertView, position);
         Task current = getItem(position);
-        tv.setText(current.getTaskName());
+        tv.setText(current.getName());
         chk.setChecked(current.getStatus());
         chk.setTag(current);
         deleteButton.setTag(current);
-        Log.d("listener", String.valueOf(current.getId()));
         return convertView;
 
+    }
+
+    public boolean shouldCreateView(View convertView){
+        if(convertView == null)
+            return true;
+//        Button deleteButton = (Button)convertView.findViewById(R.id.buttonDelete);
+//        Task task = (Task) deleteButton.getTag();
+//        if(getPosition(task) < 0) {
+//            Log.d("Odtwarzam na nowo", task.getName());
+//            return true;
+//        }
+
+        return true;
     }
 }

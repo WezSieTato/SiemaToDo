@@ -8,8 +8,16 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.wezsietato.todo.TasksActivity"
+            android:name=".taskview.TasksActivity"
             android:label="@string/title_activity_tasks" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".noteview.NotesActivity"
+            android:label="@string/title_activity_notes" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
